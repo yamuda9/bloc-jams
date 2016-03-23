@@ -30,6 +30,22 @@ var albumMarconi = {
     ]
 };
 
+// My Example Album
+var albumMine = {
+    title: 'The Album',
+    artist: 'Me',
+    label: 'NWA',
+    year: '1989',
+    albumArtUrl: 'assets/images/album_covers/16.png',
+    songs: [
+        { title: 'Intro', duration: '1:01' },
+        { title: 'A Tale of 2 Voices', duration: '5:01' },
+        { title: 'Poetic Ammunition', duration: '3:21'},
+        { title: 'An Ending', duration: '3:14' },
+        { title: 'Outro', duration: '2:15'}
+    ]
+};
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
@@ -61,6 +77,20 @@ var setCurrentAlbum = function(album) {
     }
 };
 
+var albumCover = document.getElementsByClassName('album-cover-art')[0];
+var albumArray = [albumPicasso, albumMarconi, albumMine];
+var albumCounter = 0;
+
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
+};
+
+albumCover.onclick = function() {
+    if (albumCounter == (albumArray.length - 1)) {
+        albumCounter = 0;
+    } else {
+        albumCounter++;
+    };
+    
+    setCurrentAlbum(albumArray[albumCounter]);
 };
